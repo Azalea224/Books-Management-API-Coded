@@ -1,0 +1,41 @@
+{
+  "name": "books-management-api-coded",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "type-check": "tsc --noEmit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Azalea224/Books-Management-API-Coded.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Azalea224/Books-Management-API-Coded/issues"
+  },
+  "homepage": "https://github.com/Azalea224/Books-Management-API-Coded#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "mongoose": "^9.0.0",
+    "morgan": "^1.10.1",
+    "multer": "^2.0.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.5",
+    "@types/morgan": "^1.9.10",
+    "@types/multer": "^2.0.0",
+    "@types/node": "^24.10.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.9.3"
+  }
+}

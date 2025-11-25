@@ -1,0 +1,559 @@
+{
+	"info": {
+		"_postman_id": "books-management-api",
+		"name": "Books Management API",
+		"description": "Complete API collection for Books Management System with Authors, Categories, and Books CRUD operations",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authors",
+			"item": [
+				{
+					"name": "Get All Authors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/authors",
+							"host": ["{{base_url}}"],
+							"path": ["api", "authors"]
+						},
+						"description": "Get all authors with populated books array"
+					}
+				},
+				{
+					"name": "Get Author by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/authors/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "authors", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "author_id_here",
+									"description": "Author ID"
+								}
+							]
+						},
+						"description": "Get single author by ID with populated books"
+					}
+				},
+				{
+					"name": "Create Author",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"J.K. Rowling\",\n  \"country\": \"United Kingdom\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/authors",
+							"host": ["{{base_url}}"],
+							"path": ["api", "authors"]
+						},
+						"description": "Create a new author"
+					}
+				},
+				{
+					"name": "Update Author",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"J.K. Rowling\",\n  \"country\": \"UK\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/authors/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "authors", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "author_id_here",
+									"description": "Author ID"
+								}
+							]
+						},
+						"description": "Update author's name and/or country"
+					}
+				},
+				{
+					"name": "Delete Author",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/authors/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "authors", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "author_id_here",
+									"description": "Author ID"
+								}
+							]
+						},
+						"description": "Delete an author (hard delete)"
+					}
+				}
+			]
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "Get All Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/categories",
+							"host": ["{{base_url}}"],
+							"path": ["api", "categories"]
+						},
+						"description": "Get all categories"
+					}
+				},
+				{
+					"name": "Get Category by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/categories/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "categories", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "category_id_here",
+									"description": "Category ID"
+								}
+							]
+						},
+						"description": "Get single category by ID"
+					}
+				},
+				{
+					"name": "Create Category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Fantasy\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/categories",
+							"host": ["{{base_url}}"],
+							"path": ["api", "categories"]
+						},
+						"description": "Create a new category"
+					}
+				},
+				{
+					"name": "Update Category",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Science Fiction\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/categories/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "categories", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "category_id_here",
+									"description": "Category ID"
+								}
+							]
+						},
+						"description": "Update category name"
+					}
+				},
+				{
+					"name": "Delete Category",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/categories/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "categories", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "category_id_here",
+									"description": "Category ID"
+								}
+							]
+						},
+						"description": "Delete a category (hard delete)"
+					}
+				}
+			]
+		},
+		{
+			"name": "Books",
+			"item": [
+				{
+					"name": "Get All Books",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/books",
+							"host": ["{{base_url}}"],
+							"path": ["api", "books"]
+						},
+						"description": "Get all books with populated author and categories"
+					}
+				},
+				{
+					"name": "Get All Books - Filter by Author",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/books?author=author_id_here",
+							"host": ["{{base_url}}"],
+							"path": ["api", "books"],
+							"query": [
+								{
+									"key": "author",
+									"value": "author_id_here",
+									"description": "Author ID"
+								}
+							]
+						},
+						"description": "Filter books by author ID"
+					}
+				},
+				{
+					"name": "Get All Books - Filter by Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/books?categories=category_id_here",
+							"host": ["{{base_url}}"],
+							"path": ["api", "books"],
+							"query": [
+								{
+									"key": "categories",
+									"value": "category_id_here",
+									"description": "Single category ID"
+								}
+							]
+						},
+						"description": "Filter books by single category ID"
+					}
+				},
+				{
+					"name": "Get All Books - Filter by Multiple Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/books?categories=category_id1,category_id2,category_id3",
+							"host": ["{{base_url}}"],
+							"path": ["api", "books"],
+							"query": [
+								{
+									"key": "categories",
+									"value": "category_id1,category_id2,category_id3",
+									"description": "Comma-separated category IDs"
+								}
+							]
+						},
+						"description": "Filter books by multiple categories (comma-separated)"
+					}
+				},
+				{
+					"name": "Get All Books - Search by Title",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/books?title=harry",
+							"host": ["{{base_url}}"],
+							"path": ["api", "books"],
+							"query": [
+								{
+									"key": "title",
+									"value": "harry",
+									"description": "Partial title (case-insensitive)"
+								}
+							]
+						},
+						"description": "Search books by title (case-insensitive partial match)"
+					}
+				},
+				{
+					"name": "Get All Books - Combined Filters",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/books?author=author_id&title=harry&categories=cat_id1,cat_id2",
+							"host": ["{{base_url}}"],
+							"path": ["api", "books"],
+							"query": [
+								{
+									"key": "author",
+									"value": "author_id"
+								},
+								{
+									"key": "title",
+									"value": "harry"
+								},
+								{
+									"key": "categories",
+									"value": "cat_id1,cat_id2"
+								}
+							]
+						},
+						"description": "Combine multiple filters: author, title, and categories"
+					}
+				},
+				{
+					"name": "Get All Books - Include Deleted",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/books?includeDeleted=true",
+							"host": ["{{base_url}}"],
+							"path": ["api", "books"],
+							"query": [
+								{
+									"key": "includeDeleted",
+									"value": "true",
+									"description": "Include soft-deleted books"
+								}
+							]
+						},
+						"description": "Get all books including soft-deleted ones"
+					}
+				},
+				{
+					"name": "Get Book by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/books/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "books", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "book_id_here",
+									"description": "Book ID"
+								}
+							]
+						},
+						"description": "Get single book by ID with populated author and categories"
+					}
+				},
+				{
+					"name": "Create Book",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Harry Potter and the Philosopher's Stone",
+									"type": "text"
+								},
+								{
+									"key": "author",
+									"value": "author_id_here",
+									"type": "text"
+								},
+								{
+									"key": "categories",
+									"value": "[\"category_id1\", \"category_id2\"]",
+									"type": "text",
+									"description": "JSON array of category IDs"
+								},
+								{
+									"key": "coverImage",
+									"type": "file",
+									"src": [],
+									"description": "Optional cover image file"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/books",
+							"host": ["{{base_url}}"],
+							"path": ["api", "books"]
+						},
+						"description": "Create a new book with optional cover image upload"
+					}
+				},
+				{
+					"name": "Create Book (JSON only, no image)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Harry Potter and the Philosopher's Stone\",\n  \"author\": \"author_id_here\",\n  \"categories\": [\"category_id1\", \"category_id2\"]\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/books",
+							"host": ["{{base_url}}"],
+							"path": ["api", "books"]
+						},
+						"description": "Create a new book without cover image"
+					}
+				},
+				{
+					"name": "Update Book",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Updated Book Title",
+									"type": "text"
+								},
+								{
+									"key": "author",
+									"value": "author_id_here",
+									"type": "text"
+								},
+								{
+									"key": "categories",
+									"value": "[\"category_id1\"]",
+									"type": "text",
+									"description": "JSON array of category IDs"
+								},
+								{
+									"key": "coverImage",
+									"type": "file",
+									"src": [],
+									"description": "Optional cover image file"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/books/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "books", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "book_id_here",
+									"description": "Book ID"
+								}
+							]
+						},
+						"description": "Update book details with optional cover image upload"
+					}
+				},
+				{
+					"name": "Update Book (JSON only)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Updated Book Title\",\n  \"author\": \"author_id_here\",\n  \"categories\": [\"category_id1\"]\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/books/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "books", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "book_id_here",
+									"description": "Book ID"
+								}
+							]
+						},
+						"description": "Update book details without changing cover image"
+					}
+				},
+				{
+					"name": "Delete Book",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/books/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "books", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "book_id_here",
+									"description": "Book ID"
+								}
+							]
+						},
+						"description": "Soft delete a book (sets deleted flag to true)"
+					}
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}
+

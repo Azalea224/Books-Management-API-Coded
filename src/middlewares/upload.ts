@@ -1,9 +1,9 @@
-import multer from 'multer';
-import path from 'path';
-import fs from 'fs';
+import multer from "multer";
+import path from "path";
+import fs from "fs";
 
 // Ensure uploads directory exists
-const uploadsDir = path.join(__dirname, '../../uploads');
+const uploadsDir = path.join(__dirname, "../../uploads");
 if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir, { recursive: true });
 }
@@ -15,7 +15,7 @@ const storage = multer.diskStorage({
   },
   filename: (_req, file, cb) => {
     // Generate unique filename: timestamp-originalname
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
     const ext = path.extname(file.originalname);
     const name = path.basename(file.originalname, ext);
     cb(null, `${name}-${uniqueSuffix}${ext}`);
@@ -23,13 +23,21 @@ const storage = multer.diskStorage({
 });
 
 // File filter for images only
-const fileFilter = (_req: any, file: Express.Multer.File, cb: multer.FileFilterCallback) => {
-  const allowedMimes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
-  
+const fileFilter = (
+  _req: any,
+  file: Express.Multer.File,
+  cb: multer.FileFilterCallback
+) => {
+  const allowedMimes = ["image/jpeg", "image/jpg", "image/png", "image/gif"];
+
   if (allowedMimes.includes(file.mimetype)) {
     cb(null, true);
   } else {
-    cb(new Error('Invalid file type. Only JPEG, PNG, and GIF images are allowed.'));
+    cb(
+      new Error(
+        "Invalid file type. Only JPEG, PNG, and GIF images are allowed."
+      )
+    );
   }
 };
 
@@ -58,4 +66,3 @@ export const uploadAnySingle = (req: any, res: any, next: any) => {
 };
 
 export default upload;
-

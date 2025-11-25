@@ -42,5 +42,20 @@ const upload = multer({
   },
 });
 
+// Custom middleware to accept any single file field name
+// This wraps upload.any() to ensure it accepts any field name
+export const uploadAnySingle = (req: any, res: any, next: any) => {
+  upload.any()(req, res, (err: any) => {
+    if (err) {
+      return next(err);
+    }
+    // Limit to first file only if multiple files are uploaded
+    if (req.files && Array.isArray(req.files) && req.files.length > 1) {
+      req.files = [req.files[0]];
+    }
+    next();
+  });
+};
+
 export default upload;
 
